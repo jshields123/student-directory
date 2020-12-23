@@ -14,23 +14,34 @@ def input_students
     name = gets.chomp
   end
   # return the array of students
-  students
+students
 end
 
 
 
+#
 def print_header
   puts "The students of Villians Academy"
   puts "-------------"
 end
-
+#
 def print(students)
-  students.select do |student|
-    if student[:name].length < 12
-  puts "#{student[:name]} (#{student[:cohort]} cohort)"
+  count = 0
+    until count >= students.count
+      students.each_with_index do |student, index|
+      puts "#{student[:name]} (#{student[:cohort]} cohort)"
     end
+      count += 1
+
   end
 end
+# def print(students)
+#   students.each do |student|
+#     if student[:name].length < 12
+#   puts "#{student[:name]} (#{student[:cohort]} cohort)"
+#     end
+#   end
+# end
 
 
 def print_footer(names)
