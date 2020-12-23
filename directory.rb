@@ -24,17 +24,20 @@ def print_header
   puts "-------------"
 end
 
-
-
 def print(students)
-  students.select do |student|
-  student.each do |k, v|
-    if v[0] == "J"
-  puts "#{student[:name]} (#{student[:cohort]} cohort)"
+  students.each_with_index do |student, index|
+    puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)"
     end
-  end
 end
-end
+# def print(students)
+#   students.select do |student|
+#   student.each do |k, v|
+#     if v[0] == "J"
+#   puts "#{student[:name]} (#{student[:cohort]} cohort)"
+#     end
+#   end
+# end
+# end
 
 def print_footer(names)
   puts "Overall, we have #{names.count} great students"
