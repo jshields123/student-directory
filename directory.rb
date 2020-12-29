@@ -4,16 +4,16 @@ def input_students
   # create an empty array
   @students = []
 
-  name = gets.chomp
+  name = gets.strip
 
   puts "Please enter the students cohort".center(150)
-  cohort = gets.chomp
+  cohort = gets.strip
 
   puts "Please enter the country of birth".center(150)
-  country_of_birth = gets.chomp
+  country_of_birth = gets.strip
 
   puts "Please enter your height in cm".center(150)
-  height = gets.chomp
+  height = gets.strip
 
   # while the name is not empty, repeat this code
   while !name.empty? do # && !height.empty? && !country_of_birth.empty?
@@ -23,18 +23,18 @@ def input_students
     puts "Now we have #{@students.count} students".center(150)
 
     puts "Please enter the names of the students".center(150)
-    name = gets.chomp
+    name = gets.strip
 # put in a if the is exit = break the loop.
 
 
     puts "Please enter the students cohort".center(150)
-    cohort = gets.chomp
+    cohort = gets.strip
 
     puts "Please enter the country of birth".center(150)
-    country_of_birth = gets.chomp
+    country_of_birth = gets.strip
 
     puts "Please enter your height in cm".center(150)
-    height = gets.chomp
+    height = gets.strip
 
     # if (name || cohort || country_of_birth || height) == 'exit'
     # exit
@@ -65,7 +65,7 @@ def print_by_cohort(students)
     students.each do |student|
       # if student cohort matches the cohort of the group put them in that list.
       if student[:cohort] == cohort
-        puts "#{student[:name]}, #{student[:country_of_birth].upcase}".center(150)
+        puts "#{student[:name]}, #{student[:height]}cm, #{student[:country_of_birth].upcase}".center(150)
       end
     end
   end
@@ -83,6 +83,7 @@ def print_footer(names)
     puts "Overall, we have #{names.count} great students!".center(150)
   end
 end
+
 
 
 # nothing happens until we call the methods.
