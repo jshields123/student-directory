@@ -15,6 +15,17 @@ def interactive_menu
   end
 end
 
+
+def feedback(selection)
+  selections = ["1", "2", "3", "4", "9"]
+  if selections.include?(selections)
+    puts "OK, let's do that"
+  else
+    puts "I don't know what you meant, try again"
+  end
+end
+
+
 def process(selection)
   case selection
   when "1"
@@ -27,10 +38,10 @@ def process(selection)
     load_students
   when "9"
     exit #this will cause the program to terminate
-  else
-    puts "I don't know what you meant, try again"
   end
+  feedback(selection)
 end
+
 
 def input_students
   puts "Please enter the names of the students"
@@ -40,7 +51,8 @@ def input_students
   # while the name is not empty, repeat this code
   while !name.empty? do
   # add the student hash to the array
-  @students << {name: name, cohort: :november}
+  add_to_students(name, :cohort)
+  # @students << {name: name, cohort: :november}
   puts "Now we have #{@students.count} students"
   # get another name from the user
   name = STDIN.gets.chomp
@@ -84,9 +96,14 @@ def load_students(filename = "students.csv")
   file = File.open(filename, "r")
   file.readlines.each do |line|
     name, cohort = line.chomp.split(',')
-    @students << {name: name, cohort: cohort.to_sym}
+    add_to_students(name, :cohort)
+
   end
   file.close
+end
+
+def add_to_students(name, cohort)
+  @students << {name: name, cohort: :cohort}
 end
 
 def try_load_students
