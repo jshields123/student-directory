@@ -18,7 +18,7 @@ end
 
 def feedback(selection)
   selections = ["1", "2", "3", "4", "9"]
-  if selections.include?(selections)
+  if selections.include?(selection)
     puts "OK, let's do that"
   else
     puts "I don't know what you meant, try again"
@@ -103,7 +103,7 @@ def load_students(filename = "students.csv")
 end
 
 def add_to_students(name, cohort)
-  @students << {name: name, cohort: :cohort}
+  @students << {name: name, cohort: :jan}
 end
 
 def try_load_students
