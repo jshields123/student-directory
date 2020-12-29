@@ -17,8 +17,8 @@ end
 
 
 def feedback(selection)
-  selections = ["1", "2", "3", "4", "9"]
-  if selections.include?(selection)
+  options = ["1","2","3","4","9"]
+    if options.include?(selection.chomp)
     puts "OK, let's do that"
   else
     puts "I don't know what you meant, try again"
@@ -81,26 +81,40 @@ def print_footer
 end
 
 def save_students
+  # ask for a file to save to
+  puts "Which file do you want to save to?"
+  # save the user input to their chosen file
+  chosen_file = STDIN.gets.chomp
+  if chosen_file.empty?
+    chosen_file = "students.csv"
   # open file for writing
-  file = File.open("students.csv", "w")
+  file = File.open(chosen_file, "w") do |file|
   # iterate over the array of students
   @students.each do |student|
     student_data = [student[:name], student[:cohort]]
     csv_line = student_data.join(",")
     file.puts csv_line
   end
-  file.close
+end
+end
 end
 
-def load_students(filename = "students.csv")
-  file = File.open(filename, "r")
+def load_students
+  # ask for a file to save to
+  puts "Which file do you want to save to?"
+  # save the user input to their chosen file
+  chosen_file = STDIN.gets.chomp
+  if chosen_file.empty?
+    chosen_file = "students.csv"
+  file = File.open(chosen_file, "r") do |file|
   file.readlines.each do |line|
     name, cohort = line.chomp.split(',')
     add_to_students(name, :cohort)
-
+      end
+    end
   end
-  file.close
 end
+
 
 def add_to_students(name, cohort)
   @students << {name: name, cohort: :jan}
